@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+</script>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1> Store Name Here </h1>
+    </div>
+
+    <div class="container">
+
+      <div class="sidebar" id="leftsidebar">
+        <table style="width: 100%; height:60%">
+          <tr><td>Donut 1</td></tr>
+          <tr><td>Donut 2</td></tr>
+          <tr><td>Donut 3</td></tr>
+        </table>
+        <table style="width: 100%; height:42%">
+          <tr><td id="bank">Bank/Budget Here</td></tr>
+        </table>
+
+      </div>
+
+      <div class="middle">
+
+        <div id="description">
+          <article id="info">
+            <img src="logo.png" style="float:right; height: 300px; width: 300px; padding:0px 20px 0px 0px">
+            <h1> Donut Name Here</h1>
+            <p> Donut Description Here </p><br><br>
+            <h2> PRICE HERE </h2>
+            <button class="plusOneButton"> Add 1 </button>
+          </article>
+        </div>
+
+        <div id="transactionDiv">
+          <div id="cartDiv">
+            <p id="cart"> cart text </p>
+            <button class="purchaseButton"> Purchase </button>
+          </div>
+
+          <div id="receiptDiv" hidden="true">
+            <p id="receipt" >receipt text</p>
+            <button class="purchaseAgainButton"> Make another purchase </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sidebar" id="rightsidebar">
+        <table style="width: 100%; height:60%">
+          <tr><td>Donut 4</td></tr>
+          <tr><td>Donut 5</td></tr>
+          <tr><td>Donut 6</td></tr>
+        </table>
+        <table style="width: 100%; height:42%">
+          <tr><td id="total">Total Here</td></tr>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</body>
+<script src="constructors.js"></script>
+<script src="inventory.js"></script>
+
+<script src="services.js"></script>
+
+</html>

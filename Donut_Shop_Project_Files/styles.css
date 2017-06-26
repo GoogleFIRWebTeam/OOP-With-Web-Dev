@@ -1,0 +1,75 @@
+* {margin:0; padding:0; box-sizing:border-box; text-align: center;
+}
+table, td {
+    border: 1px solid black;
+}
+
+.sidebar {
+  height: 85vh;
+  width: 20%;
+  float: left;
+  background: ;
+}
+
+.sidebar table tr td{
+  height: 20%;
+  width: 100%;
+  color: blue;
+
+}
+
+#rightsidebar{
+}
+
+#leftsidebar{
+}
+
+#description{
+  height: 65%;
+  width: 100%;
+  float: left;
+  background: ;
+  color: orange;
+}
+
+.header{
+  height: 12vh;
+  background: pink;
+  color: blue;
+}
+
+.middle{
+  background: teal;
+  height: 85vh;
+  width: 60%;
+  float: left;
+}
+
+#purchaseButton, #addMoneyButton{
+  width: 85%;
+  height: 50px;
+  font-size: 25px;
+
+}
+#money{
+  width: 75%;
+  height: 40px;
+  font-size: 30px;
+  text-align: left;
+}
+
+.cash{
+  font-size: 50px;
+  color:green;
+}
+
+.menuIMG{
+  width: 40%;
+}
+
+#donutIMG{
+  float:right;
+  height:;
+  width: 50%;
+  padding:0px 20px 0px 0px
+}

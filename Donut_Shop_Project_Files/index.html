@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1> Store Name Here </h1>
+    </div>
+
+    <div class="container">
+
+      <div class="sidebar" id="leftsidebar">
+        <table id="donutsWithHoles" style="width: 100%; height:60%">
+        </table>
+
+        <table style="width: 100%; height:42%">
+          <tr>
+            <td id="">
+              <h1><u>Bank</u></h1>
+              <span style="font-size:40px;">$</span><input id="money" placeholder=""><br><br>
+              <button id="addMoneyButton" onclick="addMoney()"> Add $$$ </button>
+              <h1 class="cash" >$<span id="bankAmount">0.00</span</h1>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class="middle">
+
+        <div id="welcome">
+          <article id="info">
+            <img id="logo" src="" style="">
+            <h1 id="welcome"> Welcome</h1>
+            <p id="instructions"> To order donuts... </p><br><br>
+            <h2 id="HotLight"> Donuts Are Hot! </h2>
+          </article>
+        </div>
+
+        <div id="description" >
+          <article id="info">
+            <img id="donutIMG" src="" style="">
+            <h1 id="donutName"> Donut Name Here </h1>
+            <p id="donutInfo"> Donut Description Here </p><br>
+            <p id="donutinStock"> PRICE HERE </p><br><br>
+            <h2 id="donutPrice"> PRICE HERE </h2>
+
+
+            <button class="plusOneButton" onclick="plusOne()"> Add 1 </button>
+          </article>
+        </div>
+
+        <div id="transactionDiv">
+          <div id="cartDiv" >
+            <table >
+              <tr>
+                <td id="cart">
+
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="receiptDiv" hidden="true">
+            <p id="receipt" >receipt text</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sidebar" id="rightsidebar">
+        <table id="donutsWithFilling" style="width: 100%; height:60%">
+
+        </table>
+        <table style="width: 100%; height:42%">
+          <tr><td>
+            <h1><u>Total</u></h1>
+            <h1 class="cash" >$<span id="totalAmount">0.00</span </h1><br>
+            <button id="purchaseButton" onclick="executeSell()"> Purchase </button>
+          </td></tr>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</body>
+<script src="constructors.js"></script>
+<script src="inventory.js"></script>
+
+<script src="services.js"></script>
+
+
+</html>
