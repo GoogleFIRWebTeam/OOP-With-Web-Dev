@@ -1,21 +1,68 @@
 * {margin:0; padding:0; box-sizing:border-box; text-align: center;
 }
-table, td {
+table
+{
+    border: 1px dotted yellow;
+    width: 100%;
+}
+
+td
+{
     border: 1px solid black;
 }
 
-.sidebar {
+.sidebar
+{
   height: 85vh;
   width: 20%;
   float: left;
   background: ;
 }
-
 .sidebar table tr td{
   height: 20%;
   width: 100%;
-  color: blue;
+  color: ;
 
+}
+.header{
+  height: 15vh;
+  background: ;
+  color: ;
+}
+
+.middle
+{
+  background: ;
+  height: 85vh;
+  width: 60%;
+  float: left;
+}
+
+.cash{
+  font-size: 50px;
+  color:green;
+}
+
+.menuIMG{
+  width: 40%;
+}
+
+#Headlogo{
+    height: 100%;
+}
+
+#purchaseButton, #addMoneyButton, #clearCartButton{
+  width: 85%;
+  height: 50px;
+  font-size: 25px;
+
+}
+
+#money{
+  width: 75%;
+  height: 40px;
+  font-size: 175%;
+  text-align: left;
 }
 
 #rightsidebar{
@@ -29,42 +76,7 @@ table, td {
   width: 100%;
   float: left;
   background: ;
-  color: orange;
-}
-
-.header{
-  height: 12vh;
-  background: pink;
-  color: blue;
-}
-
-.middle{
-  background: teal;
-  height: 85vh;
-  width: 60%;
-  float: left;
-}
-
-#purchaseButton, #addMoneyButton{
-  width: 85%;
-  height: 50px;
-  font-size: 25px;
-
-}
-#money{
-  width: 75%;
-  height: 40px;
-  font-size: 30px;
-  text-align: left;
-}
-
-.cash{
-  font-size: 50px;
-  color:green;
-}
-
-.menuIMG{
-  width: 40%;
+  color: ;
 }
 
 #donutIMG{
@@ -72,4 +84,42 @@ table, td {
   height:;
   width: 50%;
   padding:0px 20px 0px 0px
+}
+
+#cartDiv{
+  width: 100%;
+}
+
+#welcome{
+  width: 75%;
+  margin: 0 auto;
+}
+
+#orderList{
+  padding: 0 30 30 30;
+}
+#instructions, li{
+  text-align:left;
+}
+
+#HotLight{
+  margin: 20px;
+  color: red;
+  width: inherit;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+
+}
+
+/* The animation code */
+@keyframes example {
+    from {
+      border: 1px dotted pink;
+      color: pink;
+    }
+    to {
+      border: 1px dotted yellow;
+      color: red;
+    }
 }

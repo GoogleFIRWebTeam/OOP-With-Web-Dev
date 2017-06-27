@@ -9,7 +9,7 @@
   <div class="container">
 
     <div class="header">
-      <h1> Store Name Here </h1>
+      <img id="Headlogo" src="imgs/logo.png">
     </div>
 
     <div class="container">
@@ -32,13 +32,21 @@
       </div>
 
       <div class="middle">
-
         <div id="welcome">
           <article id="info">
             <img id="logo" src="" style="">
-            <h1 id="welcome"> Welcome</h1>
-            <p id="instructions"> To order donuts... </p><br><br>
+            <h1 id="welcome"> Welcome to The Yummy Donut Store</h1>
+            <p id="subwelcome"> <i>Where you can get the donuts delivered right to your doorstep</i> </p>
             <h2 id="HotLight"> Donuts Are Hot! </h2>
+            <h3 style="text-align:left;" id="instructions"> To order donuts...
+              <ol id="orderList" >
+                <li> Choose a Donut from the left or right menu by clicking the photo </li>
+                <li> Add the Donut(s) to your Box </li>
+                <li> Add as many Donuts as you want! </li>
+                <li> Add money to your bank in the bottom left  </li>
+                <li> Make purchase in the bottom right </li>
+              </ol>
+            </h3><br><br>
           </article>
         </div>
 
@@ -56,14 +64,14 @@
         </div>
 
         <div id="transactionDiv">
-          <div id="cartDiv" >
+          <div id="cartDiv" align="center" >
             <table >
               <tr>
                 <td id="cart">
-
                 </td>
               </tr>
             </table>
+            <button id="clearCartButton" onclick="clearCart()"> Clear Cart </button>
           </div>
 
           <div id="receiptDiv" hidden="true">
@@ -94,7 +102,6 @@
 </body>
 <script src="constructors.js"></script>
 <script src="inventory.js"></script>
-
 <script src="services.js"></script>
 
 

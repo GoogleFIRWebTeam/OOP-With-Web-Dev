@@ -1,20 +1,9 @@
-var glazedPhoto="DonutPics/glazed.png"
-var chocPhoto="DonutPics/chocolate.png"
-var sprinklePhoto="DonutPics/sprinkled.png"
-var lemonPhoto="DonutPics/lemon.png"
-var strawberryPhoto="DonutPics/strawberry.png"
-var creamPhoto="DonutPics/cream.png"
-
-/************************
-This is a donut object
-************************/
-var donutObject = {
-  category:"category",
-  name:"name",
-  description:"some description",
-  price: 0.01
-};
-
+var glazedPhoto="imgs/glazed.png"
+var chocPhoto="imgs/chocolate.png"
+var sprinklePhoto="imgs/sprinkled.png"
+var lemonPhoto="imgs/lemon.png"
+var strawberryPhoto="imgs/strawberry.png"
+var creamPhoto="imgs/cream.png"
 
 /************************
 THe following lines:
@@ -23,10 +12,10 @@ THe following lines:
 ************************/
 var RegularGlazed = new  DonutConstructor("Regular" , "Original Glazed", "The classic Donut", 2.50, glazedPhoto);
 var ChocolateCovered = new  DonutConstructor("Regular" , "Chocolate Covered", "Chocolate covered donut for the chocolate lovers", 3.50,chocPhoto);
-var SprinkledGlazed = new  DonutConstructor("Regular" , "Sprinkles", "The Original Glazed with sprinkles", 3.50, sprinklePhoto);
-var StrawberryFilled = new  DonutConstructor("Filled" , "Strawberry", "Strawberry filled donut", 3.75, strawberryPhoto);
+var SprinkledGlazed = new  DonutConstructor("Regular" , "Sprinkled", "The Original Glazed with sprinkles", 3.50, sprinklePhoto);
+var StrawberryFilled = new  DonutConstructor("Filled" , "Strawberry", "Strawberry jelly filled donut", 3.75, strawberryPhoto);
 var CreamFilled = new  DonutConstructor("Filled" , "Cream", "Cream filled donut", 3.75, creamPhoto);
-var LemonFilled = new  DonutConstructor("Filled" , "Lemon", "Lemon jelly filled", 3.75, lemonPhoto);
+var LemonFilled = new  DonutConstructor("Filled" , "Lemon", "Lemon cream filled donut", 3.75, lemonPhoto);
 
 var DonutsInStock =
 [
@@ -39,6 +28,17 @@ var DonutsInStock =
 ]
 
 /**
+
+/************************
+This is a donut object
+We use a constructor to create donuts and this line isnt needed
+
+var donutObject = {
+  category:"category",
+  name:"name",
+  description:"some description",
+  price: 0.01
+};
 The following lines display different results
 
 //alert (yourTransaction.receipt);
@@ -51,4 +51,6 @@ var yourReceipt = yourTransaction.receipt();
 
 document.getElementById("receipt").innerHTML =
 "Your receipt: " + yourReceipt;
+
+
 **/

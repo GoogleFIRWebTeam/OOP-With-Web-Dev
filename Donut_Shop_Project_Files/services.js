@@ -1,4 +1,5 @@
 
+updateInventory();
 document.getElementById("cartDiv").style.display = "none";
 document.getElementById("description").style.display = "none";
 
@@ -18,6 +19,8 @@ var imgURL, price, donutname, desc;
 
 var cartTable =  document.getElementById("cart");
 var shoppingCartCode ;
+var DonutsInCart=[];
+
 
 console.log( "Starting Bank Amount: " + AmountInBank);
 console.log( "Starting Order Total : " + purchaseTotal);
@@ -28,12 +31,13 @@ function addMoney(){
     alert('Please enter a number amount.');
   }
   else{
-    newBank = AmountInBank + moneyToAdd;
+    newBank = parseFloat(AmountInBank) + parseFloat(moneyToAdd);
     AmountInBank = newBank;
-    console.log("addMoney() function money to be added is " + moneyToAdd + " and the new bank total is "+ newBank);
+    console.log("addMoney() function money to be added is " + moneyToAdd + " and the new bank total is " + newBank);
+    newBank = parseFloat(newBank);
     bank.innerHTML = newBank.toFixed(2);
     document.getElementById('money').value="";
-    //alert(AmountInBank)
+    //alert(newBank);
   }
 }
 
@@ -49,116 +53,151 @@ function executeSell(){
       console.log(AmountInBank);
       bank.innerHTML = AmountInBank;
       getReceipt();
+      //console.log("your Cart:");
+      //console.log(DonutsInCart);
+      //console.log(DonutsInStock);
+      updateInStock();
       clearCart();
-      purchaseTotal = 0;
-      totalAmount.innerHTML = (purchaseTotal).toFixed(2)
+      //purchaseTotal = 0;
+      //totalAmount.innerHTML = (purchaseTotal).toFixed(2);
+
     }
 }
 
-//This For Each Function populates the inventory
-DonutsInStock.forEach(function (donuts, index){
-  var regularDonutCount = 0;
-  var filledDonutCount = 0;
+function updateInStock(){
+  DonutsInStock.forEach(function (donuts, index){
+    instock = parseFloat(donuts.instock);
+    donutInStockName = donuts.donut.name;
+    //console.log(donutInStockName + instock);
+    DonutsInCart.forEach(function(donut, index){
+      quantity = parseFloat(donut.quantity);
+      donut = donut.name
+      if(donut == donutInStockName ){
+        //console.log(donutInStockName + instock);
+        console.log("remove "+quantity +" "+ donut + " donuts from the inventory" );
+        donuts.instock = instock - quantity; //this line updates the quantity amount in stock
+        console.log("New inventory for " + donut + " is " +donuts.instock);
+      }
+    })
+  });
+  console.log(DonutsInStock);
+  updateInventory();
 
-  //Assigns the donut objects to appropriate variable name
-  var donut = donuts.donut.name;
-  var price = donuts.donut.price;
-  var cat = donuts.donut.category;
-  var img = donuts.donut.imgUrl;
-  var desc = donuts.donut.description;
-  var instock = donuts.instock;
+}
 
-  //Create variable to control the DOM of the html table for the sidemenus
-  var donutsWithHolesTable =  document.getElementById("donutsWithHoles")
-  var donutsWithFillingTable =  document.getElementById("donutsWithFilling")
-  console.log(cat + " -> " + donut + " : $" + price.toFixed(2)+ " image URL: "+img);
+function updateInventory(){
+  document.getElementById("donutsWithHoles").innerHTML = "";
+  document.getElementById("donutsWithFilling").innerHTML = "";
+  //This For Each Function populates the inventory
+  DonutsInStock.forEach(function (donuts, index){
+    var regularDonutCount = 0;
+    var filledDonutCount = 0;
 
-  //populate sidemenu
-  if(cat == "Regular"){
-    donutsWithHoleinfoRow = donutsWithHolesTable.insertRow(regularDonutCount);
-    donutsWithHoleinfoCell = donutsWithHoleinfoRow.insertCell(regularDonutCount);
-    donutsWithHoleinfoCell.innerHTML = "<img class='menuIMG' src='"+img+"' name='"+ donut +"' price='"+price +"' info='"+desc+"' instock='"+instock+"'><br><p id='menuItemName'>" + donut + "<br>"+ instock + "</p>";
-    regularDonutCount+=1;
-  }
-  else if(cat == "Filled"){
-    donutsWithFillinginfoRow = donutsWithFillingTable.insertRow(filledDonutCount);
-    donutsWithFillinginfoCell = donutsWithFillinginfoRow.insertCell(filledDonutCount);
-    donutsWithFillinginfoCell.innerHTML = "<img class='menuIMG' src='"+img+"' name='"+ donut +"' price='"+price +"' info='"+desc+"' instock=' "+instock+"'><br><p id='menuItemName'>" + donut + "<br>"+ instock + "</p>";
-    filledDonutCount+=1;
-  }
+    //Assigns the donut objects to appropriate variable name
+    var donut = donuts.donut.name;
+    var price = donuts.donut.price;
+    var cat = donuts.donut.category;
+    var img = donuts.donut.imgUrl;
+    var desc = donuts.donut.description;
+    var instock = donuts.instock;
 
-});
+    //Create variable to control the DOM of the html table for the sidemenus
+    var donutsWithHolesTable =  document.getElementById("donutsWithHoles")
+    var donutsWithFillingTable =  document.getElementById("donutsWithFilling")
+    console.log(cat + " -> " + donut + " : $" + price.toFixed(2)+ " image URL: "+img);
 
+    //populate sidemenu
+    if(cat == "Regular"){
+      donutsWithHoleinfoRow = donutsWithHolesTable.insertRow(regularDonutCount);
+      donutsWithHoleinfoCell = donutsWithHoleinfoRow.insertCell(regularDonutCount);
+      donutsWithHoleinfoCell.innerHTML = "<img class='menuIMG' src='"+img+"' name='"+ donut +"' price='"+price +"' info='"+desc+"' instock='"+instock+"'><br><p id='menuItemName'>" + donut + "<br> in stock: "+ instock + "</p>";
+      regularDonutCount+=1;
+    }
+    else if(cat == "Filled"){
+      donutsWithFillinginfoRow = donutsWithFillingTable.insertRow(filledDonutCount);
+      donutsWithFillinginfoCell = donutsWithFillinginfoRow.insertCell(filledDonutCount);
+      donutsWithFillinginfoCell.innerHTML = "<img class='menuIMG' src='"+img+"' name='"+ donut +"' price='"+price +"' info='"+desc+"' instock=' "+instock+"'><br><p id='menuItemName'>" + donut + "<br> in stock: "+ instock + "</p>";
+      filledDonutCount+=1;
+    }
+
+  });
+
+  //sideMenu()
+
+
+}
 
 /**
 This function is assigned to the variable "showDonut" and it is called
 every time a Donut is selected on a sidemenu via the click listener below it  from the sidemenu
 **/
-var showDonut = function() {
+var showDonut = function(e){
   document.getElementById("welcome").style.display = "none";
   document.getElementById("description").style.display = "block";
-  imgURL = this.getAttribute("src");
-  donutname = this.getAttribute("name");
-  price = parseFloat(this.getAttribute("price")).toFixed(2);
-  desc = this.getAttribute("info");
-  instock = parseFloat(this.getAttribute("instock"));
+  imgURL = e.getAttribute("src");
+  donutname = e.getAttribute("name");
+  price = parseFloat(e.getAttribute("price")).toFixed(2);
+  desc = e.getAttribute("info");
+  //instock = parseFloat(e.getAttribute("instock"));
+  //chosenDonutStock.innerHTML = instock;
   chosenDonutPrice.innerHTML = price;
   chosenDonutName.innerHTML = donutname;
   chosenDonutInfo.innerHTML = desc;
-  chosenDonutStock.innerHTML = instock;
   chosenDonutPic.src = imgURL;
 };
+
 /**
-This for loop adds a click type event listener to any element with the class "menuIMG"
+This line adds click event listener to any element with the class "menuIMG"
+It's done this way because the menu's are recreated dynamically everytime a purchase occurs
+in order to update the inventory amount
+
+Everytime a class="menuIMG" item is clicked this will run
 **/
-donutPics = document.getElementsByClassName('menuIMG'); //creates an array of the different elements that have the class name menu
-for (var i = 0; i < donutPics.length; i++) {
-    donutPics[i].addEventListener('click', showDonut, false);
-}
+document.querySelector('body').addEventListener('click', function(event) {
+  if (event.target.className === 'menuIMG') {
+    console.log(event.target);
+    showDonut(event.target);
+  }
+});
 
 /**
 The function below registers everytime the user presses the buttomn to add a donut to their list
 below are some global variables used by plusOne()
 **/
-var numberOfDonuts = 0;
-var tempDonut="";
-var DonutsInCart=[];
-
 function plusOne(){
   var plusOneDonutName, plusOneDonutPrice;
   document.getElementById("receiptDiv").style.display = "none";
-
   document.getElementById("cartDiv").style.display = "block";
 
-
-//if cart has donut in it with this name
+  //if the cart has a donut in it with this name then add to the quantity
   if(containsDonut(donutname, DonutsInCart)){
-    console.log("Donut already in cart: " +containsDonut(donutname, DonutsInCart));
+    console.log("Donut already in cart? " +containsDonut(donutname, DonutsInCart));
     for (i = 0; i < DonutsInCart.length; i++) {
         if (DonutsInCart[i].name == donutname) {
           DonutsInCart[i].quantity += 1;
           purchaseTotal += parseFloat(DonutsInCart[i].price)
           //console.log(cart);
-            //return true;
         }
     }
     console.log(DonutsInCart);
     updateCart(DonutsInCart);
   }
   else if(!containsDonut(donutname, DonutsInCart) || DonutsInCart.length == 0  ) {
-    console.log("Donut already in cart: " +containsDonut(donutname, DonutsInCart));
+    console.log("Donut already in cart? " +containsDonut(donutname, DonutsInCart));
     donutObject = {name: donutname, quantity:1, price: price};
     console.log(donutObject);
-    DonutsInCart.push(donutObject)
+    DonutsInCart.push(donutObject);
     console.log(DonutsInCart);
-    price = parseFloat(price)
-    purchaseTotal += price
+    price = parseFloat(price);
+    purchaseTotal += price;
     updateCart(DonutsInCart);
     //console.log(DonutsInCart[index].name + " :pushing object: " + plusOneDonutName +" index: "+ index +": tempdonut is :" + tempDonut);
   }
-
 }
 
+/**
+This function updates the cart when an item is added plusOne() or when a sell is made executeSell
+**/
 function updateCart(cart){
   var  row = 0;
   shoppingCartCode = "";
@@ -174,28 +213,33 @@ function updateCart(cart){
   totalAmount.innerHTML = purchaseTotal.toFixed(2);
 }
 
+/**
+This function clears the cart
+**/
 function clearCart(){
   DonutsInCart = [];
   shoppingCartCode = "";
-  //updateCart(DonutsInCart);
-  cartTable.innerHTML = "Empty Cart";
+  cartTable.innerHTML = "You have nothing in your Box";
+  purchaseTotal = 0;
+  totalAmount.innerHTML = (purchaseTotal).toFixed(2);
 }
-
+/**
+This function shows the receipt
+Currently very basic
+**/
 function getReceipt(){
   console.log(shoppingCartCode);
   document.getElementById("cartDiv").style.display = "none";
-
   document.getElementById("receiptDiv").style.display = "block";
-
+  receiptDiv.innerHTML = shoppingCartCode;
 }
 
 //Function for checking if the shopping cart has the current donut
 function containsDonut(donut, cart) {
-    var i;
-    for (i = 0; i < cart.length; i++) {
+    for (var i = 0; i < cart.length; i++) {
         if (cart[i].name == donut) {
           //console.log(cart);
-            return true;
+          return true;
         }
     }
     return false;
