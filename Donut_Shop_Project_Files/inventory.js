@@ -12,7 +12,7 @@ THe following lines:
 ************************/
 var RegularGlazed = new  DonutConstructor("Regular" , "Original Glazed", "The classic Donut", 2.50, glazedPhoto);
 var ChocolateCovered = new  DonutConstructor("Regular" , "Chocolate Covered", "Chocolate covered donut for the chocolate lovers", 3.50,chocPhoto);
-var SprinkledGlazed = new  DonutConstructor("Regular" , "Sprinkled", "The Original Glazed with sprinkles", 3.50, sprinklePhoto);
+var SprinkledGlazed = new  DonutConstructor("Regular" , "Sprinkled", "The Original Glazed with pink frosting & sprinkles", 3.50, sprinklePhoto);
 var StrawberryFilled = new  DonutConstructor("Filled" , "Strawberry", "Strawberry jelly filled donut", 3.75, strawberryPhoto);
 var CreamFilled = new  DonutConstructor("Filled" , "Cream", "Cream filled donut", 3.75, creamPhoto);
 var LemonFilled = new  DonutConstructor("Filled" , "Lemon", "Lemon cream filled donut", 3.75, lemonPhoto);

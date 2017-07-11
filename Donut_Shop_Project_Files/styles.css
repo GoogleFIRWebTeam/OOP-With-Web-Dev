@@ -8,7 +8,7 @@ table
 
 td
 {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .sidebar
@@ -39,7 +39,7 @@ td
 }
 
 .cash{
-  font-size: 50px;
+  font-size: 40px;
   color:green;
 }
 
@@ -90,8 +90,8 @@ td
   width: 100%;
 }
 
-#welcome{
-  width: 75%;
+#welcome, #cartDiv, #receiptDiv{
+  width: 70%;
   margin: 0 auto;
 }
 

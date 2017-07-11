@@ -1,11 +1,21 @@
 
+
+/**
+Debug and watch what's going on in the background by opening the JS Developer Console in Google Chrome
+You will notice all the items being logged to the console and what code line it comes from
+I would like to add:
+1. adding 5 donuts each every 1 minute
+2. not allowing the user to by more donuts that are in stock
+3.
+**/
+
 updateInventory();
 document.getElementById("cartDiv").style.display = "none";
 document.getElementById("description").style.display = "none";
 
 var bank = document.getElementById('bankAmount');
 var AmountInBank = parseFloat(bank.innerHTML)
-var totalBank = document.getElementById('bankAmount');
+//var totalBank = document.getElementById('bankAmount');
 var purchaseTotal = parseFloat(totalAmount.innerHTML)
 /**
 The variables are used inside the showDonut function
@@ -15,7 +25,7 @@ var chosenDonutName= document.getElementById('donutName');
 var chosenDonutInfo = document.getElementById('donutInfo');
 var chosenDonutPrice = document.getElementById('donutPrice');
 var chosenDonutStock = document.getElementById('donutinStock');
-var imgURL, price, donutname, desc;
+var imgURL, price, donutname, desc, amountBeforePurch;
 
 var cartTable =  document.getElementById("cart");
 var shoppingCartCode ;
@@ -49,6 +59,7 @@ function executeSell(){
   }
   else
     {
+      amountBeforePurch = parseFloat(AmountInBank)
       AmountInBank = (parseFloat(AmountInBank) - parseFloat(purchaseTotal)).toFixed(2)
       console.log(AmountInBank);
       bank.innerHTML = AmountInBank;
@@ -64,6 +75,9 @@ function executeSell(){
     }
 }
 
+/**
+This function updates the amount of donuts in stock once a purchase is made
+**/
 function updateInStock(){
   DonutsInStock.forEach(function (donuts, index){
     instock = parseFloat(donuts.instock);
@@ -85,6 +99,9 @@ function updateInStock(){
 
 }
 
+/**
+This function updates the inventory and updates the menu on the html page dynamically everytime it's called
+**/
 function updateInventory(){
   document.getElementById("donutsWithHoles").innerHTML = "";
   document.getElementById("donutsWithFilling").innerHTML = "";
@@ -121,9 +138,6 @@ function updateInventory(){
     }
 
   });
-
-  //sideMenu()
-
 
 }
 
@@ -228,7 +242,8 @@ This function shows the receipt
 Currently very basic
 **/
 function getReceipt(){
-  console.log(shoppingCartCode);
+  shoppingCartCode += "<br><p>Total: " + parseFloat(purchaseTotal).toFixed(2) + "<br> Cash Received: " + parseFloat(amountBeforePurch).toFixed(2) + "<br> Change Due: " + AmountInBank + "</p>";
+  console.log("Your total was " + purchaseTotal + ". You gave " + amountBeforePurch + " so your change is " +AmountInBank );
   document.getElementById("cartDiv").style.display = "none";
   document.getElementById("receiptDiv").style.display = "block";
   receiptDiv.innerHTML = shoppingCartCode;
